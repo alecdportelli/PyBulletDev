@@ -1,3 +1,12 @@
+'''
+Hello World PyBullet file
+Code is courtesy of: https://medium.com/@chand.shelvin/pybullet-getting-started-a068a0e3d492
+
+Author: Alec Portelli
+alecportelli@icloud.com
+alecdportelli.com
+'''
+
 import pybullet as p
 import time
 import pybullet_data
