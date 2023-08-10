@@ -11,24 +11,14 @@ import pybullet as p
 import time
 import pybullet_data
 import gym
+from time import sleep
 
-# Init Env
-client = p.connect(p.GUI)
-p.setGravity(0, 0, -9.8, physicsClientId=client) 
-p.setAdditionalSearchPath(pybullet_data.getDataPath())
-
-# Import assets 
-planeId = p.loadURDF("plane.urdf")
-carId = p.loadURDF("racecar/racecar.urdf", basePosition=[0,0,0.2])
-
-# Get car position and rotation
-position, orientation = p.getBasePositionAndOrientation(carId)
-
-# Run sim
-for _ in range(300): 
-    pos, ori = p.getBasePositionAndOrientation(carId)
-    p.applyExternalForce(carId, 0, [50, 0, 0], pos, p.WORLD_FRAME)
-    p.stepSimulation()
+p.connect(p.GUI)
+car = p.loadURDF('simplecar.urdf')
+number_of_joints = p.getNumJoints(car)
+for joint_number in range(number_of_joints):
+    info = p.getJointInfo(car, joint_number)
+    print(info)
 
 
 
